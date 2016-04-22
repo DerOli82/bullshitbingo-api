@@ -39,7 +39,7 @@ return array(
             'page_size_param' => null,
             'entity_class' => 'BullshitBingo\\V1\\Rest\\Buzzwords\\BuzzwordsEntity',
             'collection_class' => 'BullshitBingo\\V1\\Rest\\Buzzwords\\BuzzwordsCollection',
-            'service_name' => 'buzzwords',
+            'service_name' => 'Buzzwords',
         ),
     ),
     'zf-content-negotiation' => array(
@@ -121,6 +121,7 @@ return array(
                         ),
                     ),
                 ),
+                'description' => 'Buzzword position in bingo grid',
             ),
             1 => array(
                 'name' => 'text',
@@ -150,6 +151,7 @@ return array(
                         ),
                     ),
                 ),
+                'description' => 'Buzzword text',
             ),
             2 => array(
                 'name' => 'marked',
@@ -169,6 +171,7 @@ return array(
                         ),
                     ),
                 ),
+                'description' => 'if buzzword is marked',
             ),
         ),
     ),
