@@ -31,7 +31,6 @@ return array(
                    }
                }
               "id": "Buzzword db id",
-              "pos": "Buzzword position in bingo grid",
               "text": "Buzzword text",
               "marked": "if buzzword is marked",
               "modifiedat": "Last modification timestamp"
@@ -44,7 +43,7 @@ return array(
             'POST' => array(
                 'description' => 'Create a new buzzword',
                 'request' => '{
-   "pos": "Buzzword position in bingo grid",
+   "id": "Buzzword db id",
    "text": "Buzzword text",
    "marked": "if buzzword is marked"
 }',
@@ -55,7 +54,6 @@ return array(
        }
    }
    "id": "Buzzword db id",
-   "pos": "Buzzword position in bingo grid",
    "text": "Buzzword text",
    "marked": "if buzzword is marked",
    "modifiedat": "Last modification timestamp"
@@ -93,7 +91,6 @@ return array(
                    }
                }
               "id": "Buzzword db id",
-              "pos": "Buzzword position in bingo grid",
               "text": "Buzzword text",
               "marked": "if buzzword is marked",
               "modifiedat": "Last modification timestamp"
@@ -114,7 +111,6 @@ return array(
        }
    }
    "id": "Buzzword db id",
-   "pos": "Buzzword position in bingo grid",
    "text": "Buzzword text",
    "marked": "if buzzword is marked",
    "modifiedat": "Last modification timestamp"
@@ -123,7 +119,7 @@ return array(
             'PATCH' => array(
                 'description' => 'Change a buzzword entry',
                 'request' => '{
-   "pos": "Buzzword position in bingo grid",
+   "id": "Buzzword db id",
    "text": "Buzzword text",
    "marked": "if buzzword is marked"
 }',
@@ -134,7 +130,6 @@ return array(
        }
    }
    "id": "Buzzword db id",
-   "pos": "Buzzword position in bingo grid",
    "text": "Buzzword text",
    "marked": "if buzzword is marked",
    "modifiedat": "Last modification timestamp"

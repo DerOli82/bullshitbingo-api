@@ -1,5 +1,10 @@
 <?php
 return array(
+    'service_manager' => array(
+        'factories' => array(
+            'BullshitBingo\\V1\\Rest\\Buzzwords\\BuzzwordsResource' => 'BullshitBingo\\V1\\Rest\\Buzzwords\\BuzzwordsResourceFactory',
+        ),
+    ),
     'router' => array(
         'routes' => array(
             'bullshit-bingo.rest.buzzwords' => array(
@@ -35,7 +40,7 @@ return array(
                 2 => 'DELETE',
             ),
             'collection_query_whitelist' => array(),
-            'page_size' => 25,
+            'page_size' => '16',
             'page_size_param' => null,
             'entity_class' => 'BullshitBingo\\V1\\Rest\\Buzzwords\\BuzzwordsEntity',
             'collection_class' => 'BullshitBingo\\V1\\Rest\\Buzzwords\\BuzzwordsCollection',
@@ -76,15 +81,23 @@ return array(
             ),
         ),
     ),
-    'zf-apigility' => array(
-        'db-connected' => array(
-            'BullshitBingo\\V1\\Rest\\Buzzwords\\BuzzwordsResource' => array(
-                'adapter_name' => 'BullshitBingo',
-                'table_name' => 'buzzwords',
-                'hydrator_name' => 'Zend\\Hydrator\\ArraySerializable',
-                'controller_service_name' => 'BullshitBingo\\V1\\Rest\\Buzzwords\\Controller',
-                'entity_identifier_name' => 'id',
-                'table_service' => 'BullshitBingo\\V1\\Rest\\Buzzwords\\BuzzwordsResource\\Table',
+    'zf-mvc-auth' => array(
+        'authorization' => array(
+            'BullshitBingo\\V1\\Rest\\Buzzwords\\Controller' => array(
+                'collection' => array(
+                    'GET' => false,
+                    'POST' => true,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => true,
+                ),
+                'entity' => array(
+                    'GET' => false,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => true,
+                    'DELETE' => true,
+                ),
             ),
         ),
     ),
@@ -96,16 +109,14 @@ return array(
     'input_filter_specs' => array(
         'BullshitBingo\\V1\\Rest\\Buzzwords\\Validator' => array(
             0 => array(
-                'name' => 'pos',
                 'required' => true,
-                'filters' => array(),
                 'validators' => array(
                     0 => array(
                         'name' => 'ZF\\ContentValidation\\Validator\\DbNoRecordExists',
                         'options' => array(
-                            'adapter' => 'BullshitBingo',
+                            'adapter' => 'bullshitbingodb',
                             'table' => 'buzzwords',
-                            'field' => 'pos',
+                            'field' => 'id',
                         ),
                     ),
                     1 => array(
@@ -121,10 +132,11 @@ return array(
                         ),
                     ),
                 ),
-                'description' => 'Buzzword position in bingo grid',
+                'filters' => array(),
+                'name' => 'id',
+                'description' => 'Buzzword id',
             ),
             1 => array(
-                'name' => 'text',
                 'required' => true,
                 'filters' => array(
                     0 => array(
@@ -138,7 +150,7 @@ return array(
                     0 => array(
                         'name' => 'ZF\\ContentValidation\\Validator\\DbNoRecordExists',
                         'options' => array(
-                            'adapter' => 'BullshitBingo',
+                            'adapter' => 'bullshitbingodb',
                             'table' => 'buzzwords',
                             'field' => 'text',
                         ),
@@ -151,12 +163,11 @@ return array(
                         ),
                     ),
                 ),
+                'name' => 'text',
                 'description' => 'Buzzword text',
             ),
             2 => array(
-                'name' => 'marked',
                 'required' => false,
-                'filters' => array(),
                 'validators' => array(
                     0 => array(
                         'name' => 'Zend\\I18n\\Validator\\IsInt',
@@ -171,7 +182,9 @@ return array(
                         ),
                     ),
                 ),
-                'description' => 'if buzzword is marked',
+                'filters' => array(),
+                'name' => 'marked',
+                'description' => 'If buzzword is marked',
             ),
         ),
     ),

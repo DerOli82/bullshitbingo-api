@@ -2,13 +2,13 @@
 return array(
     'db' => array(
         'adapters' => array(
-            'BullshitBingo' => array(),
+            'bullshitbingodb' => array(),
         ),
     ),
     'zf-mvc-auth' => array(
         'authentication' => array(
             'map' => array(
-                'BullshitBingo\\V1' => 'bullshitbingo',
+                'BullshitBingo\\V1' => 'bullshitbingoauth',
             ),
         ),
     ),
