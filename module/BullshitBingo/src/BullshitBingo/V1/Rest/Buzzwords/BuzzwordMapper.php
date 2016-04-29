@@ -44,7 +44,7 @@ class BuzzwordMapper
     public function insert( BuzzwordsEntity $buzzword )
     {
         $datetime = new \DateTime();
-        $buzzword->modifiedat = $datetime->format( 'Y-m-d H:i:s' );
+        $buzzword->modifiedat = $datetime->format( \DateTime::ISO8601 );
         
         return $this->table->insert( $buzzword->getArrayCopy() );
     }
@@ -52,7 +52,7 @@ class BuzzwordMapper
     public function update( BuzzwordsEntity $buzzword )
     {
         $datetime = new \DateTime();
-        $buzzword->modifiedat = $datetime->format( 'Y-m-d H:i:s' );
+        $buzzword->modifiedat = $datetime->format( \DateTime::ISO8601 );
 
         $this->table->update( $buzzword->getArrayCopy(), array( 'id' => $buzzword->id ));
     }
